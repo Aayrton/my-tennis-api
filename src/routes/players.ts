@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
-import data from '../../data.json';
+import data from '@data.json';
 import { Player } from '../models/Player';
 
 const router = express.Router();
