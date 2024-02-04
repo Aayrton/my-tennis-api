@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 const corsOptions = {
-  origin: '*',
+  origin: ['http://localhost:3000', 'https://eurotennis.vercel.app'],
 };
 
 app.use(cors(corsOptions));

@@ -11,7 +11,7 @@ require("dotenv/config");
 const app = (0, express_1.default)();
 const port = process.env.PORT || 8000;
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://eurotennis.vercel.app/'],
+    origin: ['http://localhost:3000', 'https://eurotennis.vercel.app'],
 };
 app.use((0, cors_1.default)(corsOptions));
 app.get('/', (req, res) => {
