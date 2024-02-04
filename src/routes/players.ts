@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
-import data from '@data.json';
-import { Player } from '../models/Player';
+import data from '../data.json';
+import { Player } from '@models/Player';
 
 const router = express.Router();
 
@@ -14,8 +14,6 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
 
       return -1;
     });
-
-    throw new Error('WOW');
 
     res.json(filteredPlayers);
   } catch (error) {

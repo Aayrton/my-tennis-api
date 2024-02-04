@@ -4,18 +4,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const _data_json_1 = __importDefault(require("@data.json"));
+const data_json_1 = __importDefault(require("../data.json"));
 const router = express_1.default.Router();
 // Get all players
 router.get('/', (req, res, next) => {
     try {
-        const filteredPlayers = _data_json_1.default.players.sort((a, b) => {
+        const filteredPlayers = data_json_1.default.players.sort((a, b) => {
             if (a.id > b.id) {
                 return 1;
             }
             return -1;
         });
-        throw new Error('WOW');
         res.json(filteredPlayers);
     }
     catch (error) {
@@ -25,7 +24,7 @@ router.get('/', (req, res, next) => {
 // Get player by id
 router.get('/:id', (req, res, next) => {
     try {
-        const player = _data_json_1.default.players.find(({ id }) => id === parseInt(req.params.id));
+        const player = data_json_1.default.players.find(({ id }) => id === parseInt(req.params.id));
         if (typeof player === 'undefined') {
             throw new Error('Player Not Found');
         }
