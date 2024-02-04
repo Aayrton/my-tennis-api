@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response, NextFunction, Express } from 'express';
 import data from '../data.json';
 import { Player } from 'src/interfaces/player';
 
