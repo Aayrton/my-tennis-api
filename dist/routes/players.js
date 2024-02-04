@@ -26,7 +26,9 @@ router.get('/:id', (req, res, next) => {
     try {
         const player = data_json_1.default.players.find(({ id }) => id === parseInt(req.params.id));
         if (typeof player === 'undefined') {
-            throw new Error('Player Not Found');
+            res.statusCode = 404;
+            const error = new Error('Player Not Found');
+            return next(error);
         }
         res.json(player);
     }

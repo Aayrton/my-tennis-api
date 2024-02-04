@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import data from '../data.json';
-import { Player } from '@models/Player';
+import { Player } from 'src/interfaces/player';
 
 const router = express.Router();
 
@@ -29,7 +29,9 @@ router.get('/:id', (req: Request, res: Response, next: NextFunction) => {
     );
 
     if (typeof player === 'undefined') {
-      throw new Error('Player Not Found');
+      res.statusCode = 404;
+      const error = new Error('Player Not Found');
+      return next(error);
     }
 
     res.json(player);

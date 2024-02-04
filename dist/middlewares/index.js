@@ -1,17 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.errorHandler = exports.notFound = void 0;
-function notFound(req, res, next) {
-    res.status(404);
-    const error = new Error('Not Found lol');
-    next(error);
-}
-exports.notFound = notFound;
+exports.errorHandler = void 0;
 function errorHandler(err, req, res, next) {
+    if (res.headersSent) {
+        return next(err);
+    }
     res.status(res.statusCode || 500);
     res.json({
         message: err.message,
-        stack: err.stack,
     });
 }
 exports.errorHandler = errorHandler;
